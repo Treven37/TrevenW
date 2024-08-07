@@ -1,0 +1,13 @@
+@import '../../styles/variables';
+
+.button1, .button2 {
+	color: $primary-analogous-color;
+}
+
+.button1 {
+  background-color: $base-dominant-color;
+}
+
+.button2 {
+  background-color: $accent-color;
+}

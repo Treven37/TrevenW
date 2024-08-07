@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import trevenLogo from './assets/treven.svg'
+import NormalButton from './components/Button/NormalButton'
 
 import './App.scss'
 
@@ -18,10 +19,12 @@ function App() {
         </a>
       </div>
       <h1>Treven + React</h1>
+	  <NormalButton style="button2"/>
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
           count is {count}
         </button>
+		
         <p>
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
