@@ -1,7 +1,35 @@
-$base-dominant-color: #8A2BE2;
-$accent-color: #4169E1;
-$neutral-color: #333333;
-$primary-analogous-color: #E6E6FA;
-$primary-analogous2-color: #0033A0;
-$neutral-complement-color: #B0B0B0;
-$gradiant-color: linear-gradient(to bottom, $base-dominant-color 0%, $accent-color 50%, $neutral-color 100%);
+//color
+$base-dominant-color: #9d47f2;   // Lightened version of #8A2BE2
+$accent-color: #5985f4;          // Lightened version of #4169E1
+$neutral-color: #f5f5f5;         // Lightened, neutral light grey for backgrounds
+$primary-analogous-color: #f5f5ff; // Very light version of #E6E6FA
+$primary-analogous2-color: #2e57c4; // Lightened version of #0033A0
+$neutral-complement-color: #d3d3d3; // Lightened version of #B0B0B0
+
+
+$base-dominant-color-dark: #8A2BE2;
+$accent-color-dark: #4169E1;
+$neutral-color-dark: #1c1c1c;
+$primary-analogous-color-dark: #E6E6FA;
+$primary-analogous2-color-dark: #0033A0;
+$neutral-complement-color-dark: #B0B0B0;
+
+@mixin gradient-background {
+  background: linear-gradient(
+    to bottom,
+    $base-dominant-color 0%,
+    $accent-color 100%
+  );
+}
+
+@mixin gradient-background-dark {
+  background: linear-gradient(
+    to bottom,
+    $base-dominant-color-dark 0%,
+    $accent-color-dark 100%
+  );
+}
+//number
+
+//string
+ 
