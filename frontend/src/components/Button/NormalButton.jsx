@@ -2,17 +2,18 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './NormalButton.scss';
 
-const NormalButton = ({style}) => {
+const NormalButton = ({onClick, style, text}) => {
   return (
-    <button className={style}>
-      Hi
+    <button onClick={onClick} className={style}>
+      {text}
     </button>
   );
 };
 
 // Define prop types
 NormalButton.propTypes = {
-  style: PropTypes.string
+  style: PropTypes.string,
+  text: PropTypes.string
 };
 
 // Define default props
