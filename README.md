@@ -1,1 +1,1 @@
-Social media promoting creativity and critical thinking.
+Social Media. Strategy meets social.
