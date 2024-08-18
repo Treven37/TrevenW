@@ -1,1 +1,1 @@
-Social Media for Chess.
+Social Media. Strategy meets social.
