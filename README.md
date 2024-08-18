@@ -1,1 +1,1 @@
-Social Media. Strategy meets social.
+Strategy meets social.
