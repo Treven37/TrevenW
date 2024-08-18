@@ -18,20 +18,32 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './styles/styleglobal.scss'
 
 function App() {
+	if (localStorage.getItem('flash') == null) {
+		localStorage.setItem('flash', 'true');
+	}
 	const { theme, toggleTheme } = useContext(ThemeContext);
-	const [isFlashing, setIsFlashing] = useState(true);
+	const [isFlashing, setIsFlashing] = useState(localStorage.getItem('flash') == 'true');
 	const [isLoggedin, setIsLoggedin] = useState(false);
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			setIsFlashing(false);
-		}, 1373337);
-
-		return () => clearTimeout(timer); // Cleanup the timer
-	}, [isFlashing]);
+		if (localStorage.getItem('flash') == 'true') {
+			const timer = setTimeout(() => {
+				localStorage.setItem('flash', 'false');
+				setIsFlashing(false);
+			}, 2637);
+			return () => clearTimeout(timer); // Cleanup the timer
+		} else {
+			//alert('hi');
+			const timer2 = setTimeout(() => {
+				localStorage.setItem('flash', 'true');
+				setIsFlashing(false);
+			}, 37373);
+			return () => clearTimeout(timer2); // Cleanup the timer
+		}
+	}, []);
 	
 	if (isFlashing) {
-	 	return (<><Flashscreen /><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>);
+		return (<><Flashscreen /></>);
 	} else {
 		if (isLoggedin) {
 			return (
@@ -47,7 +59,7 @@ function App() {
 			return (
 				<Router>
       				<Routes>
-        				<Route path="/" element={<><Welcomescreen/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
+        				<Route path="/" element={<><Welcomescreen/></>} />
         				<Route path="/login" element={<><Loginscreen/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
         				<Route path="/signup" element={<><Signupscreen/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
         				<Route path="/verification" element={<><Verification/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
@@ -55,6 +67,7 @@ function App() {
     			</Router>
 			)
 		}
+		
 	}
 }
 

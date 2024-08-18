@@ -23,15 +23,24 @@ mongoose.connect(mongoDBUri, {
 const db = mongoose.connection;
 db.on('connected', () => console.log('Mongoose connected'));
 db.on('error', err => console.error('Mongoose connection error:', err));
-db.on('disconnected', () => console.log('Mongoose disconnected'));
+db.on('disconnected', () => { console.log('Mongoose disconnected'); });
 
 app.listen(PORT, () => {
 	console.log(`App listening at port ${PORT}`)
 });
 
 process.on('SIGINT', () => {
-  mongoose.connection.close(() => {
-    console.log('Mongoose connection disconnected through app termination');
-    process.exit(0);
-  });
+async function closeConnection() {
+    try {
+        await mongoose.connection.close();
+        console.log('Connection closed successfully.');
+        process.exit(0);
+    } catch (err) {
+        console.error('Failed to close the connection:', err);
+    }
+}
+
+// Call the function when you need to close the connection
+closeConnection();
+
 });

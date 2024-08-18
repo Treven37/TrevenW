@@ -3,16 +3,18 @@
 //assets
 
 //components
-
+import NormalButton from '../components/Button/NormalButton'
+import NormalText from '../components/Text/NormalText'
+import AnchorText from '../components/Text/AnchorText'
 //styles
 import '../styles/styleglobal.scss'
 
-const a = () => {
-  	return (
-  	<>
-		<p>login</p>
+const Loginscreen = () => {
+	return (
+	<>
+		<AnchorText location="/" style="text1" text="Test"/>
 	</>  
-  	)
+	)
 };
 
-export default a
+export default Loginscreen

@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './NormalText.scss';
+import styles from './NormalText.module.scss';
 
 const NormalText = ({style, text}) => {
   return (
-    <span className={style}>
+    <span className={style == 'text1' ? styles.text1 : (style == 'text2' ? styles.text2 : styles.text3)}>
       {text}
     </span>
   );
