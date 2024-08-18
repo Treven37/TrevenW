@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+
+.button1, .button2, .button1o {
+	color: var(primary-analogous-color);
+	border: none;
+	height: 48px;
+	width: 273px;
+	font-size: 15px;
+	font-weight: 500;
+	border-radius: 11px;
+	text-decoration: none;
+	margin: 7px;
+}
+.button1 {
+	background-color: var(--base-dominant-color);
+}
+
+.button2 {
+	background-color: var(--accent-color);
+}
+
+.button1o {
+	background-color: var(--base-dominant-color);
+	position: absolute;
+	width: 45px;
+	top: 21px;
+	right: 21px;
+}

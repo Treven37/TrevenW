@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import './NormalButton.scss';
+import React from 'react'
+import PropTypes from 'prop-types'
+import styles from './NormalButton.module.scss'
 
 const NormalButton = ({onClick, style, text}) => {
   return (
-    <button onClick={onClick} className={style}>
+    <button onClick={onClick} className={style == 'button1' ? styles.button1 : (style == 'button2' ? styles.button2 : styles.button1o)}>
       {text}
     </button>
   );
@@ -21,4 +21,5 @@ NormalButton.defaultProps = {
   style: 'button1'
 };
 
-export default NormalButton;
+export default NormalButton
+

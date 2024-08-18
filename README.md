@@ -1,1 +1,1 @@
-Social Media for Chess.
+Social media promoting creativity and critical thinking.
