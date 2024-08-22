@@ -9,13 +9,13 @@ import styles from './Flashscreen.module.scss'
 const FlashScreen = () => {
   	
   	return (
-  	<>
-  	  <Space Flex='80%' />
+  	<div className='main'>
+  	  <Space Flex='40%' />
 		<img className="logo" src={trevenLogo} alt="treven's logo"/>
-		<Space Flex='90%' />
+		<Space Flex='21%' />
 		<NormalText style="text3" text="WiseBoard"/>
 		<NormalText style="text1" text="from Treven"/>
-	  </>  
+	  </div>  
   	)
 };
 

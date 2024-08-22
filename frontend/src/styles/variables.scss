@@ -6,13 +6,6 @@
 --primary-analogous-color: #48485C; // Very light version of #E6E6FA
 --primary-analogous2-color: #2e57c4; // Lightened version of #0033A0
 --neutral-complement-color: #d3d3d3; // Lightened version of #B0B0B0
-@mixin gradient-background {
-  background: linear-gradient(
-    to bottom,
-    $base-dominant-color 0%,
-    $accent-color 100%
-  );
-}
 }
 
 [data-theme="Dark"] {
@@ -22,17 +15,16 @@
 --primary-analogous-color: #E6E6FA;
 --primary-analogous2-color: #0033A0;
 --neutral-complement-color: #B0B0B0;
-@mixin gradient-background-dark {
+}
+
+
+@mixin gradientbackground(){
   background: linear-gradient(
     to bottom,
-    $base-dominant-color 0%,
-    $accent-color 100%
+    var(--base-dominant-color) 0%,
+    var(--accent-color) 100%
   );
 }
-}
-
-
-
 
 //number
 

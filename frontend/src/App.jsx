@@ -7,6 +7,7 @@ import Flashscreen from './pages/Flashscreen.jsx'
 import Welcomescreen from './pages/Welcomescreen.jsx'
 import Loginscreen from './pages/Loginscreen.jsx'
 import Signupscreen from './pages/Signupscreen.jsx'
+import Forgot from './pages/Forgot.jsx'
 import Verification from './pages/Verification.jsx'
 import Home from './pages/Home.jsx'
 import User from './pages/User.jsx'
@@ -63,6 +64,7 @@ function App() {
         				<Route path="/login" element={<><Loginscreen/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
         				<Route path="/signup" element={<><Signupscreen/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
         				<Route path="/verification" element={<><Verification/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
+        				<Route path="/forgot" element={<><Forgot/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
       				</Routes>
     			</Router>
 			)

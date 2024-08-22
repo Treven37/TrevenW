@@ -1,13 +1,13 @@
 @import '../../styles/variables';
 
 .button1, .button2, .button1o {
-	color: var(primary-analogous-color);
+	color: var(--primary-analogous-color);
 	border: none;
 	height: 48px;
 	width: 273px;
 	font-size: 15px;
 	font-weight: 500;
-	border-radius: 11px;
+	border-radius: 21px;
 	text-decoration: none;
 	margin: 7px;
 }
@@ -21,7 +21,7 @@
 
 .button1o {
 	background-color: var(--base-dominant-color);
-	position: absolute;
+	position: fixed;
 	width: 45px;
 	top: 21px;
 	right: 21px;

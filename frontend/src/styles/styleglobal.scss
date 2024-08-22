@@ -47,6 +47,21 @@ body {
 		justify-content: center;
 		box-sizing: border-box;
 	}
+	.row {
+		width: 100%;
+		display: flex;
+		flex-flow: row;
+		align-items: center;
+		justify-content: left;
+		box-sizing: border-box;
+	}
+	.main {
+		height: 100%;
+		width: 100%;
+		margin: 0;
+		padding: 0;
+		justify-content: left;
+	}
 }
 
 button:hover, a:hover {

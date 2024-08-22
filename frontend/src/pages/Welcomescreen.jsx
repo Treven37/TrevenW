@@ -10,12 +10,12 @@ import '../styles/styleglobal.scss'
 
 const Welcomescreen = () => {
 	return (
-		<>
+		<div className='main'>
 			<img src={Slogan} className='full-screen-img' />
 			<Space Flex='75%' />
 			<LinkButton path='/login' onClick={null} style='button1' text='Log in' />
 			<LinkButton path='/signup' onClick={null} style='button2' text='Sign up' />
-		</>
+		</div>
 	)
 };
 

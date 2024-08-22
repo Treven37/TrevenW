@@ -10,7 +10,7 @@ import '../styles/styleglobal.scss'
 
 const Space = ({Flex}) => {
 	return (
-	<div style={{opacity: 0, margin: `${Flex}`}}>
+	<div style={{opacity: 0, margin: 0, width: `${Flex}`, height: `${Flex}`}}>
 		0
 	</div>
 	)
