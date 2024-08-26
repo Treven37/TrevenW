@@ -6,12 +6,12 @@ import PropTypes from 'prop-types'
 //styles
 import styles from './Password.module.scss'
 
-const Password = ({}) => {
+const Password = ({text}) => {
 	const [password, setPassword] = useState("");
 	return (
     <>
     	<label className={styles.label}>Password:</label>
-        <input className={styles.input} type="password" placeHolder='Password' value={password} onChange={(event) => setPassword(event.target.value)} />
+        <input className={styles.input} type="password" placeHolder={text} value={password} onChange={(event) => setPassword(event.target.value)} />
         
     </>
 	);

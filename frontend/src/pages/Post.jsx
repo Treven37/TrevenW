@@ -8,10 +8,10 @@
 import '../styles/styleglobal.scss'
 
 const a = () => {
-  	return (
-  	<>
-		<p>post</p>
-	</>  
+ 	return (
+	<div className='main'>
+		<p>Post</p>
+	</div>  
   	)
 };
 

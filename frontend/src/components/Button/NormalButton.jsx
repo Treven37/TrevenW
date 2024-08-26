@@ -2,9 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import styles from './NormalButton.module.scss'
 
-const NormalButton = ({onClick, style, text}) => {
+const NormalButton = ({onClick, style, text, type}) => {
   return (
-    <button onClick={onClick} className={style == 'button1' ? styles.button1 : (style == 'button2' ? styles.button2 : styles.button1o)}>
+    <button type={type} onClick={onClick} className={style == 'button1' ? styles.button1 : (style == 'button2' ? styles.button2 : styles.button1o)}>
       {text}
     </button>
   );

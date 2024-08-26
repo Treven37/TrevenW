@@ -1,20 +1,29 @@
 @import '../styles/variables.scss';
-.container {
-	height: 48%;
-	width: 95%;
-	background: var(--neutral-color);
-	border-radius: 73px;
-	justify-content: left;
+
+.bot {
+	flex: 1;
+	width: 100%;
+	@include gradientbackground;
 }
 
 .main {
+	flex: 2;
+	width: 100%;
+	border-radius: 73px;
+	justify-content: left;
+	background: var(--neutral-color);
+}
+
+.top {
+	flex: 1;
+	width: 100%;
+	@include gradientbackgroundrev;
+}
+
+.bg {
 	height: 100%;
 	width: 100%;
-	justify-content: left;
-	margin: 0;
-	padding: 0;
-	top: 0;
-	@include gradientbackground
+	background: var(--base-dominant-color);
 }
 
 .label {

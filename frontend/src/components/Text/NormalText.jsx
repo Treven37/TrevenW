@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styles from './NormalText.module.scss';
 
-const NormalText = ({style, text}) => {
+const NormalText = ({style, text, size}) => {
   return (
-    <span className={style == 'text1' ? styles.text1 : (style == 'text2' ? styles.text2 : styles.text3)}>
+    <span style={{fontSize: `${size}`}} className={style == 'text1' ? styles.text1 : (style == 'text2' ? styles.text2 : styles.text3)}>
       {text}
     </span>
   );

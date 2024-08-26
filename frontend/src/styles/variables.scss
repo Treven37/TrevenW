@@ -26,6 +26,21 @@
   );
 }
 
+@mixin gradientbackgroundrev(){
+  background: linear-gradient(
+    to top,
+    var(--base-dominant-color) 0%,
+    var(--accent-color) 100%
+  );
+}
+
+@mixin gradientbg(){
+  background: linear-gradient(
+    to left,
+    var(--base-dominant-color) 0%,
+    var(--accent-color) 100%
+  );
+}
 //number
 
 //string

@@ -18,34 +18,46 @@ import NormalButton from './components/Button/NormalButton'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import './styles/styleglobal.scss'
 
+
+
 function App() {
 	if (localStorage.getItem('flash') == null) {
 		localStorage.setItem('flash', 'true');
 	}
+	if (localStorage.getItem('time') == null) {
+		localStorage.setItem('time', 0);
+	}
 	const { theme, toggleTheme } = useContext(ThemeContext);
 	const [isFlashing, setIsFlashing] = useState(localStorage.getItem('flash') == 'true');
 	const [isLoggedin, setIsLoggedin] = useState(false);
-
+	
+	var time = localStorage.getItem('time');
+	
+	
 	useEffect(() => {
-		if (localStorage.getItem('flash') == 'true') {
+		
 			const timer = setTimeout(() => {
 				localStorage.setItem('flash', 'false');
 				setIsFlashing(false);
+				setInterval(()=>{
+					time++;
+					localStorage.setItem('time', time);
+					if (time == 3737) {
+						localStorage.setItem('flash', 'true');
+						setIsFlashing(false);
+						localStorage.setItem('time', 0);
+						time = 0;
+					}
+				}, 1000);
 			}, 2637);
-			return () => clearTimeout(timer); // Cleanup the timer
-		} else {
-			//alert('hi');
-			const timer2 = setTimeout(() => {
-				localStorage.setItem('flash', 'true');
-				setIsFlashing(false);
-			}, 37373);
-			return () => clearTimeout(timer2); // Cleanup the timer
-		}
+		
 	}, []);
 	
 	if (isFlashing) {
 		return (<><Flashscreen /></>);
+		return () => clearTimeout(timer);
 	} else {
+		
 		if (isLoggedin) {
 			return (
 				<Router>
@@ -61,10 +73,10 @@ function App() {
 				<Router>
       				<Routes>
         				<Route path="/" element={<><Welcomescreen/></>} />
-        				<Route path="/login" element={<><Loginscreen/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
-        				<Route path="/signup" element={<><Signupscreen/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
-        				<Route path="/verification" element={<><Verification/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
-        				<Route path="/forgot" element={<><Forgot/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
+        				<Route path="/login" element={<><Loginscreen/></>} />
+        				<Route path="/signup" element={<><Signupscreen/></>} />
+        				<Route path="/verification" element={<><Verification/></>} />
+        				<Route path="/forgot" element={<><Forgot/></>} />
       				</Routes>
     			</Router>
 			)

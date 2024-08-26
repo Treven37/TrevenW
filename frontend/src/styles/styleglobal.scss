@@ -61,6 +61,7 @@ body {
 		margin: 0;
 		padding: 0;
 		justify-content: left;
+		background: rgba(0, 0, 0, 0)
 	}
 }
 
@@ -84,7 +85,7 @@ button:hover, a:hover {
 	}
 }
 
-.full-screen-img {
+.fullscreenimg {
 	position: absolute;
 	height: 100%;
 	width: 100%;
@@ -99,4 +100,25 @@ button:hover, a:hover {
 	width: 100%;
 	bottom: 0;
 	left: 0;
+}
+
+.uinput {
+	width: 73%;
+	height: 48px;
+	border: none;
+	border-bottom: 1px solid var(--neutral-complement-color);
+	color: var(--neutral-complement-color);
+	background: var(--neutral-color);
+}
+
+.veri {
+	margin: auto;
+	padding: auto;
+	height: 61px;
+	width: 59px;
+	border: 2px solid var(--base-dominant-color);
+	border-radius: 11px;
+	color: var(--neutral-complement-color);
+	background: var(--neutral-color);
+	text-align: center;
 }

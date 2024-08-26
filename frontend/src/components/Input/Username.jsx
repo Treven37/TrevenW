@@ -6,12 +6,15 @@ import PropTypes from 'prop-types'
 //styles
 import styles from './Username.module.scss'
 
-const Username = ({}) => {
+const Username = ({text}) => {
 	const [username, setUsername] = useState("");
+	const sendData = () => {
+    	sendDataToParent(childData);
+	};
 	return (
     <>
     	<label className={styles.label}>Username:</label>
-        <input className={styles.input} type="text" placeHolder='Email or Contact Num..' value={username} onChange={(event) => setUsername(event.target.value)} />
+        <input className={styles.input} type="text" placeHolder={text} value={username} onChange={(event) => setUsername(event.target.value)} />
         
     </>
 	);
