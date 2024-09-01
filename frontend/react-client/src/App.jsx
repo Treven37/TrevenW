@@ -42,7 +42,7 @@ function App() {
 				setInterval(()=>{
 					time++;
 					localStorage.setItem('time', time);
-					if (time == 3737) {
+					if (time != 0) {
 						localStorage.setItem('flash', 'true');
 						setIsFlashing(false);
 						localStorage.setItem('time', 0);

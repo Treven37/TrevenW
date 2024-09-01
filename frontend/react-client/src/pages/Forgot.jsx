@@ -13,8 +13,8 @@ const Forgot = () => {
 	<form className='main'>
 		<Space Flex='44%'/>
 		<input class='uinput' type='text' placeHolder='Email or Contact Num..' />
-		<Space Flex='11%'/>
-		<LinkButton location='/verification' style='button1' text='Confirm'/>
+		<Space Flex='30%'/>
+		<LinkButton location='/verification' style='button1' text='Get Verification'/>
 	</form>  
 	)
 };

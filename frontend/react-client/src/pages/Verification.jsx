@@ -29,6 +29,8 @@ const Verification = () => {
 		</div>
 		<Space Flex='7%'/>
 		<LinkButton location='/verification' style='button1' text='Confirm'/>
+		<Space Flex='37%'/>
+		<NormalText style='text1' text='73s' size='13px'/>
 	</form>  
 	)
 };

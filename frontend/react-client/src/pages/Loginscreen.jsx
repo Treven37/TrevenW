@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 //hooks
 
@@ -17,7 +18,9 @@ import '../styles/styleglobal.scss'
 import styles from './Loginscreen.module.scss'
 import inputs from '../components/Input/Username.module.scss'
 
+//Fix login part
 const Loginscreen = () => {
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
     	name: '',
     	pass: ''
@@ -26,22 +29,27 @@ const Loginscreen = () => {
 	const handleSubmit = (event) => {
     	event.preventDefault();
     	const jsonData = JSON.stringify(formData);
-    	axios.post('/api/endpoint', jsonData)
+    	alert(jsonData);
+    	axios.post('http://localhost:8000/api/login', JSON.parse(jsonData))
       	.then((response) => {
-        	console.log(response.data);
+			if (response.data.a) {
+				navigate('/home');
+			}
+			
       	})
       	.catch((error) => {
         	console.error(error);
       	});
 	};
-  
 	return (
 	<div className={styles.main}>
 		<Space Flex='11%' />
 		<CircleImg size='111px'/>
 		<Space Flex='2%' />
-		<form className={styles.container}>
-			<Space Flex='11%' />
+		<form className={styles.container} onSubmit={handleSubmit}>
+			<Space Flex='3%' />
+			<NormalText style='text3' text='Log in'/>
+			<Space Flex='4%' />
 			<label className={styles.label}>Username:</label>
         	<input className={styles.input} type="text" placeHolder='Username, Email, or Contact Num..' value={formData.name} onChange={(event) => setFormData({...formData, name: event.target.value})} />
 			<Space Flex='4%' />
@@ -52,7 +60,7 @@ const Loginscreen = () => {
 				<Space Flex='58%' />
 				<AnchorText location="/forgot" style="text3" size='11px' text="Forgot Password?"/>
 			</div>
-			<Space Flex='11%' />
+			<Space Flex='7%' />
 			<NormalButton text='Log in' style='button2' type='submit'/>
 			<NormalButton text='Log in with..' style='button1'/>
 		</form>

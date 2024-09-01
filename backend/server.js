@@ -1,10 +1,21 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
+const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 8000;
 
-app.use(express.json());
+app.use(cors({
+	origin: 'http://localhost:5173'
+}));
+
+app.use(express.json()); // For JSON data
+app.use(express.urlencoded({ extended: true })); // For URL-encoded data
+
+// ... other routes
+
+
+app.use('/api', require('./routes/auth'))
 
 app.get('/', (req, res) => {
 	res.json();
@@ -20,6 +31,7 @@ mongoose.connect(mongoDBUri, {
 })
 .then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Failed to connect to MongoDB', err));
+
 const db = mongoose.connection;
 db.on('connected', () => console.log('Mongoose connected'));
 db.on('error', err => console.error('Mongoose connection error:', err));
