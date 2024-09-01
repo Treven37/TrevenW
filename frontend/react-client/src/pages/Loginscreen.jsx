@@ -33,7 +33,9 @@ const Loginscreen = () => {
     	axios.post('http://localhost:8000/api/login', JSON.parse(jsonData))
       	.then((response) => {
 			if (response.data.a) {
+				localStorage.setItem('token', response.data.token);
 				navigate('/home');
+				window.location.reload();
 			}
 			
       	})
@@ -62,7 +64,7 @@ const Loginscreen = () => {
 			</div>
 			<Space Flex='7%' />
 			<NormalButton text='Log in' style='button2' type='submit'/>
-			<NormalButton text='Log in with..' style='button1'/>
+			<NormalButton text='Log in with..' style='button1' onClick='localStorage.clear()'/>
 		</form>
 		<Space Flex='3%' />
 		<NormalText style='text1' text='No Account?' />

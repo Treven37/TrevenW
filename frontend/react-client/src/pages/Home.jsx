@@ -3,16 +3,23 @@
 //assets
 
 //components
-
+import Botnav from '../components/Botnav'
+import Space from '../components/Space'
 //styles
 import '../styles/styleglobal.scss'
 
-const a = () => {
- 	return (
+const Home = () => {
+	return (
+	<>
 	<div className='main'>
-		<p>Home</p>
-	</div>  
-  	)
+		
+			Hi
+		
+		<Botnav />
+	</div>
+	
+	</>
+	)
 };
 
-export default a
+export default Home

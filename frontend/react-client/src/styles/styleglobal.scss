@@ -61,7 +61,7 @@ body {
 		margin: 0;
 		padding: 0;
 		justify-content: left;
-		background: rgba(0, 0, 0, 0)
+		background: rgba(0, 0, 0, 0);
 	}
 }
 
@@ -113,4 +113,10 @@ button:hover, a:hover {
 	color: var(--neutral-complement-color);
 	background: var(--neutral-color);
 	text-align: center;
+}
+
+BotNav {
+	position: fixed;
+	bottom: 2%;
+	z-index: 11
 }

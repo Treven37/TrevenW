@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import {useNavigate} from 'react-router-dom'
 //hooks
@@ -28,11 +28,13 @@ const Signupscreen = () => {
 	const handleSubmit = (event) => {
     	event.preventDefault();
     	const jsonData = JSON.stringify(formData);
-    	alert(jsonData);
     	axios.post('http://localhost:8000/api/signup', JSON.parse(jsonData))
       	.then((response) => {
         	if (response.data.a) {
-        		navigate('/home')
+        		localStorage.setItem('token', response.data.token);
+        		alert(jsonData);
+        		navigate('/home');
+        		window.location.reload();
         	} else {
 				alert('failed');
         	}
