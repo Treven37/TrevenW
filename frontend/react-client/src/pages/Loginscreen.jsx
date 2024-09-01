@@ -29,7 +29,6 @@ const Loginscreen = () => {
 	const handleSubmit = (event) => {
     	event.preventDefault();
     	const jsonData = JSON.stringify(formData);
-    	alert(jsonData);
     	axios.post('http://localhost:8000/api/login', JSON.parse(jsonData))
       	.then((response) => {
 			if (response.data.a) {

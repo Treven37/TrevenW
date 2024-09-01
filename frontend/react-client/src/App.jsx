@@ -66,7 +66,7 @@ function App() {
 				<Router>
       				<Routes>
         				<Route path="/home" element={<><Home/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
-        				
+        				<Route path="*" element={<><Home/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
         				<Route path="/user" element={<><User/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
         				<Route path="/game" element={<><Game/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
       				</Routes>
@@ -76,7 +76,7 @@ function App() {
 			return (
 				<Router>
       				<Routes>
-        				<Route path="/" element={<><Welcomescreen/></>} />
+        				<Route path="*" element={<><Welcomescreen/></>} />
         				<Route path="/login" element={<><Loginscreen/></>} />
         				<Route path="/signup" element={<><Signupscreen/></>} />
         				<Route path="/verification" element={<><Verification/></>} />

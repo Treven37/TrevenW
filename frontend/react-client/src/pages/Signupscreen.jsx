@@ -32,7 +32,6 @@ const Signupscreen = () => {
       	.then((response) => {
         	if (response.data.a) {
         		localStorage.setItem('token', response.data.token);
-        		alert(jsonData);
         		navigate('/home');
         		window.location.reload();
         	} else {

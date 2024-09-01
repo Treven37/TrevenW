@@ -3,16 +3,23 @@
 //assets
 
 //components
-
+import Botnav from '../components/Botnav'
+import Space from '../components/Space'
 //styles
 import '../styles/styleglobal.scss'
 
-const a = () => {
- 	return (
+const User = () => {
+	return (
+	<>
 	<div className='main'>
-		<p>User</p>
-	</div>  
-  	)
+		
+			Hi
+		
+		<Botnav Nav={2}/>
+	</div>
+	
+	</>
+	)
 };
 
-export default a
+export default User

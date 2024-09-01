@@ -15,7 +15,7 @@ const Home = () => {
 		
 			Hi
 		
-		<Botnav />
+		<Botnav Nav={0}/>
 	</div>
 	
 	</>
