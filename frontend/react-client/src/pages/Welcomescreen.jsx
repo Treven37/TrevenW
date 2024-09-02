@@ -1,9 +1,11 @@
 //hooks
 
 //assets
-import Slogan from '../assets/Slogan.svg'
+import WelcomeChess from '../assets/WelcomeChess.svg'
+import FingerPrint from '../assets/FingerPrint.svg'
 //components
 import LinkButton from '../components/Button/LinkButton'
+import NormalText from '../components/Text/NormalText'
 import AnchorText from '../components/Text/AnchorText'
 import Space from '../components/Space'
 //styles
@@ -16,12 +18,16 @@ const Welcomescreen = () => {
 	return (
 		<>
 		<div className='main'>
-			<Space Flex='70%' />
+			<Space Flex='7%' />
+			<NormalText style='text2' text='Social meets Strategy' size='30px'/>
+			<Space Flex='55%' />
 			<LinkButton path='/login' onClick={null} style='button1' text='Log in' />
 			<LinkButton path='/signup' onClick={null} style='button2' text='Sign up' />
-			<Space Flex='3%' />
+			<Space Flex='2%' />
 			<AnchorText style='text1' text='Stay Anonymous' />
-			<img src={Slogan} className='fullscreenimg' />
+			<img src={WelcomeChess} className='welcomeimg1' />
+			<img src={FingerPrint} className='welcomeimg2' />
+			<p className='welcomeimg3'> One Tap Login </p>
 		</div>
 		</>
 	)

@@ -76,15 +76,27 @@ button:hover, a:hover {
 	}
 }
 
-.fullscreenimg {
+.welcomeimg1, .welcomeimg2, .welcomeimg3 {
 	position: absolute;
-	height: 105%;
-	width: 100%;
 	margin: 0;
-	top: 0;
-	left: 0;
 	z-index: -1;
 	opacity: 1;
+}
+
+.welcomeimg1 {
+	top: 15%;
+	width: 100%;
+}
+.welcomeimg2 {
+	top: 30%;
+	width: 40%;
+}
+.welcomeimg3 {
+	top: 45%;
+	font-size: 26px;
+	font-weight: 500;
+	color: var(--accent-color);
+	text-shadow: 0 0 3px var(--neutral-color);
 }
 .bottom-button {
 	position: fixed;

@@ -22,7 +22,8 @@ const Signupscreen = () => {
     	name: '',
     	user: '',
     	pass: '',
-    	profilepic: 'd1'
+    	profilepic: 'd1',
+    	isNum: !isNaN(Number(name))
 	});
 	
 	const handleSubmit = (event) => {
@@ -32,10 +33,20 @@ const Signupscreen = () => {
       	.then((response) => {
         	if (response.data.a) {
         		localStorage.setItem('token', response.data.token);
-        		navigate('/home');
-        		window.location.reload();
+        		localStorage.setItem('auth', formData.name);
+        		localStorage.setItem('user', formData.user);
+        		localStorage.setItem('pass', formData.pass);
+        		localStorage.setItem('profilepic', formData.profilepic);
+        		localStorage.setItem('code', response.data.code);
+        		localStorage.setItem('msg', response.data.msg);
+        		navigate('/verification');
+        		//window.location.reload();
+        	} else if (response.data.b) {
+				alert('Email / Contact Number already exist');
+				//window.location.reload();
         	} else {
-				alert('failed');
+        		alert('Username already exist');
+				//window.location.reload();
         	}
       	})
       	.catch((error) => {
@@ -45,7 +56,9 @@ const Signupscreen = () => {
 	
 	return (
 	<div className={styles.bg}>
-		<div className={styles.top}></div>
+		<div className={styles.top}>
+			<input type='file' />
+		</div>
 		<form className={styles.main} onSubmit={handleSubmit}>
 			<Space Flex='11%' />
 			<NormalText style='text3' text='Sign up'/>

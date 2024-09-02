@@ -32,9 +32,11 @@ const Loginscreen = () => {
     	axios.post('http://localhost:8000/api/login', JSON.parse(jsonData))
       	.then((response) => {
 			if (response.data.a) {
-				localStorage.setItem('token', response.data.token);
+				localStorage.setItem('finalToken', response.data.token);
 				navigate('/home');
 				window.location.reload();
+			} else {
+				alert('Incorrect Data Input');
 			}
 			
       	})
@@ -68,6 +70,8 @@ const Loginscreen = () => {
 		<Space Flex='3%' />
 		<NormalText style='text1' text='No Account?' />
 		<AnchorText location='/signup' style='text2' text='Sign up' />
+		<Space Flex='3%' />
+		<AnchorText location='/' style='text1' text='Back' />
 	</div>  
 	)
 };

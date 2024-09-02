@@ -16,6 +16,7 @@ import Game from './pages/Game.jsx'
 import { ThemeContext } from './utils/theme';
 
 import NormalButton from './components/Button/NormalButton'
+import LinkButton from './components/Button/LinkButton'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 import './styles/styleglobal.scss'
@@ -33,7 +34,7 @@ function App() {
 	}
 	const { theme, toggleTheme } = useContext(ThemeContext);
 	const [isFlashing, setIsFlashing] = useState(localStorage.getItem('flash') == 'true');
-	const [isLoggedin, setIsLoggedin] = useState(localStorage.getItem('token') !== null);
+	const [isLoggedin, setIsLoggedin] = useState(localStorage.getItem('finalToken') !== null);
 	
 	var time = localStorage.getItem('time');
 	
@@ -65,8 +66,8 @@ function App() {
 			return (
 				<Router>
       				<Routes>
-        				<Route path="/home" element={<><Home/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
-        				<Route path="*" element={<><Home/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
+        				<Route path="/home" element={<><Home/> <LinkButton path='/' text='Log out' style="button1o"/></>} />
+        				<Route path="*" element={<><LinkButton path='/' text='Log out' style="button1o"/></>} />
         				<Route path="/user" element={<><User/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
         				<Route path="/game" element={<><Game/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
       				</Routes>
@@ -76,7 +77,8 @@ function App() {
 			return (
 				<Router>
       				<Routes>
-        				<Route path="*" element={<><Welcomescreen/></>} />
+      				  <Route path="*" element={<><LinkButton path='/' text='Log out' style="button1o"/></>} />
+        				<Route path="/" element={<><Welcomescreen/></>} />
         				<Route path="/login" element={<><Loginscreen/></>} />
         				<Route path="/signup" element={<><Signupscreen/></>} />
         				<Route path="/verification" element={<><Verification/></>} />

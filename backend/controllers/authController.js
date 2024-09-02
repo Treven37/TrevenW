@@ -1,23 +1,31 @@
 const User = require('../models/User');
+const twilioConfig = require('../config/twilioConfig');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const twilio = require('twilio')(twilioConfig.accountSID, twilioConfig.authToken);
 require('dotenv').config();
 
 const signup = async (req, res) => {
-	const {name, user, pass, profilepic} = req.body;
+	const {name, user, pass, profilepic, isNum} = req.body;
 	try {
 		//checks whether name or username already exists
 		const nameExist = await User.findOne({name});
 		const userExist = await User.findOne({user});
-		if ( nameExist || userExist) {
-			return res.status(400).json({});
+		if ( nameExist) {
+			return res.status(200).json({'b': true});
+		} else if (userExist) {
+			return res.status(200).json({});
 		}
-		const newUser = new User({name, user, pass, profilepic});
-		await newUser.save();
-		//create jwttoken
-		const token = jwt.sign({userId: newUser._id}, process.env.SECRETKEY, {expiresIn: '1h'});
+		var msg;
+		const code=Math.round(Math.random()*900+1000);
+		if(isNum) {
+			msg = `Contact: ${code}`;
+		} else {
+			msg = `Email: ${code}`;
+		}
+		
 		//sucess signup
-		res.status(200).json({'a': true, 'token': token});
+		res.status(200).json({'a':true, 'name':name, 'user':user, 'pass':pass, 'profilepic':'d1', 'code':code, 'msg':msg});
 	} catch (err) { 
 		res.status(500).json({
 			
@@ -35,7 +43,7 @@ const login = async (req, res) => {
 		if (name2Exist) {
 			const isMatch = await bcrypt.compare(pass, name2Exist.pass);
 			if (!isMatch) {
-				return res.status(400).json({});	
+				return res.status(200).json({});	
 			}
 			//creates jwt
 			const token2 = jwt.sign({userId: name2Exist._id}, process.env.SECRETKEY, {expiresIn: '1h'});
@@ -45,15 +53,16 @@ const login = async (req, res) => {
 		} else if (user2Exist) {
 			const isMatch = await bcrypt.compare(pass, user2Exist.pass);
 			if (!isMatch) {
-				return res.status(400).json({});	
+				return res.status(200).json({});	
 			}
+			
 			//creates jwt
 			const token2 = jwt.sign({userId: user2Exist._id}, process.env.SECRETKEY, {expiresIn: '1h'});
 			//sucess login
 			user2Exist.isLogin = true;
 			res.status(200).json({'a': true, 'token': token2});
 		} else {
-			return res.status(400).json({});
+			return res.status(200).json({});
 		}
 		
 		
@@ -62,6 +71,27 @@ const login = async (req, res) => {
 			
 		});
 		console.log(err);
+	}
+}
+
+const verify = async (req, res) => {
+	const name = req.body.name;
+	const user = req.body.user;
+	const pass = req.body.pass;
+	const profilepic = req.body.profilepic;
+	const code = req.body.code;
+	const msg = req.body.msg;
+	const inputCode = req.body.incode;
+	if (Number(code) !== Number(inputCode)) {
+		//unsucess verified
+		res.status(200).json({'a': false, 'msg': msg});
+	} else {
+	const newUser = new User({name, user, pass, profilepic});
+	await newUser.save();
+	//create jwttoken
+	const token = jwt.sign({userId: newUser._id}, process.env.SECRETKEY, {expiresIn: '1h'});
+	//sucess verified
+	res.status(200).json({'a': true, 'token': token});
 	}
 }
 
@@ -76,4 +106,4 @@ const deleteAllUser = (req, res) => {
 		});
 }
 
-module.exports = {signup, login, deleteAllUser}
+module.exports = {signup, login, verify, deleteAllUser}

@@ -3,15 +3,19 @@ import React, { createContext, useState, useEffect } from 'react';
 export const ThemeContext = createContext();
 
 export const ThemeProvider = ({ children }) => {
-	const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
+	if (localStorage.getItem('theme') === null) {
+		localStorage.setItem('theme', 'Dark');
+	}
+	const [theme, setTheme] = useState(localStorage.getItem('theme'));
 	
   	useEffect(() => {
     	document.documentElement.setAttribute('data-theme', theme);
-    	localStorage.setItem('theme', theme);
+    	
   	}, [theme]);
 
   	const toggleTheme = () => {
-    	setTheme(theme === 'Light' ? 'Dark' : 'Light');
+  	  localStorage.setItem('theme', theme == 'Light' ? 'Dark' : 'Light');
+  	  setTheme(theme == 'Light' ? 'Dark' : 'Light');
   	};
 
   	return (

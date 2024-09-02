@@ -9,8 +9,15 @@ const LinkButton = ({path, onClick, style, text}) => {
   const handleClick = () => {
     setIsClicked(true);
     setTimeout(()=>{
-      nav(path);
-    }, 300)
+      if (path == '/') {
+      	localStorage.removeItem('finalToken');
+      	nav(path);
+      	window.location.reload();
+      } else {
+      	nav(path);
+      }
+      
+    }, 173)
   }
   return (
     <Link onClick={handleClick} style={{ textDecoration: 'none' }}>

@@ -1,9 +1,16 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 const express = require('express');
+const session = require('express-session');
 const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 8000;
+
+app.use(session({
+	secret: process.env.SECRETKEY,
+	resave: false,
+	saveUninitialized: true
+}));
 
 app.use(cors({
 	origin: 'http://localhost:5173'
