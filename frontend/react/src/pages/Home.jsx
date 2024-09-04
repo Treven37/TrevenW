@@ -12,8 +12,8 @@ const Home = () => {
 	return (
 	<>
 	<div className='main'>
-		
-			Hi
+		<Space Flex='30' />
+		<p>Testing </p>
 		
 		<Botnav Nav={0}/>
 	</div>

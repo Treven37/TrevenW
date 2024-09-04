@@ -34,7 +34,8 @@ const Loginscreen = () => {
 			if (response.data.a) {
 				localStorage.setItem('finalToken', response.data.token);
 				navigate('/home');
-				window.location.reload();
+				//window.location.reload();
+				window.location.href = 'http://localhost:4200';
 			} else {
 				alert('Incorrect Data Input');
 			}

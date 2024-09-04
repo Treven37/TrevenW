@@ -2,6 +2,7 @@ const User = require('../models/User');
 const twilioConfig = require('../config/twilioConfig');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
+const fs = require('fs');
 const twilio = require('twilio')(twilioConfig.accountSID, twilioConfig.authToken);
 require('dotenv').config();
 
@@ -25,7 +26,7 @@ const signup = async (req, res) => {
 		}
 		
 		//sucess signup
-		res.status(200).json({'a':true, 'name':name, 'user':user, 'pass':pass, 'profilepic':'d1', 'code':code, 'msg':msg});
+		res.status(200).json({'a':true, 'name':name, 'user':user, 'pass': pass, 'profilepic': profilepic, 'code':code, 'msg':msg});
 	} catch (err) { 
 		res.status(500).json({
 			
@@ -82,6 +83,13 @@ const verify = async (req, res) => {
 	const code = req.body.code;
 	const msg = req.body.msg;
 	const inputCode = req.body.incode;
+	/*fs.readFile(profilepicFile, (err, data) => {
+		if(err) {
+			console.error(err);
+			return;
+		}
+		const profilepic = data.toString('base64');
+	})*/
 	if (Number(code) !== Number(inputCode)) {
 		//unsucess verified
 		res.status(200).json({'a': false, 'msg': msg});
@@ -91,7 +99,7 @@ const verify = async (req, res) => {
 	//create jwttoken
 	const token = jwt.sign({userId: newUser._id}, process.env.SECRETKEY, {expiresIn: '1h'});
 	//sucess verified
-	res.status(200).json({'a': true, 'token': token});
+	res.status(200).json({'a': true, 'token': token, 'name': name, 'user': user, 'profilepic': profilepic});
 	}
 }
 

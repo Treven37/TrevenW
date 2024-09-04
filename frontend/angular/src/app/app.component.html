@@ -46,7 +46,7 @@
 
   h1 {
     font-size: 3.125rem;
-    color: var(--gray-900);
+    color: white;
     font-weight: 500;
     line-height: 100%;
     letter-spacing: -0.125rem;
@@ -55,16 +55,42 @@
       Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
       "Segoe UI Symbol";
   }
+  h2{
+    font-size: 2.2rem;
+    color: rgb(138,43,226);
+    font-weight: 400;
+    line-height: 100%;
+    letter-spacing: -0.125rem;
+    margin: 0;
+    font-family: "Inter Tight", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+      Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+      "Segoe UI Symbol";
+  }
+  
+  button {
+  	background: rgb(65, 105, 225);
+  	width: 73%;
+  	height: 37px;
+  	border-radius: 37px;
+  	border: none;
+  	margin-left: 13%;
+  	color: white;
+  }
+  button:active {
+  	box-shadow: 1px 3px black;
+  	transform: translateY(4px);
+  }
 
   p {
     margin: 0;
-    color: var(--gray-700);
+    color: gray;
   }
 
   main {
     width: 100%;
     min-height: 100%;
     display: flex;
+    background: rgb(37, 37, 37);
     justify-content: center;
     align-items: center;
     padding: 1rem;
@@ -225,18 +251,17 @@
           <clipPath id="a"><path fill="#fff" d="M0 0h982v239H0z" /></clipPath>
         </defs>
       </svg>
-      <h1>Hello, {{ title }}</h1>
-      <p>Congratulations! Your app is running. 🎉</p>
+      <h1> Announcement </h1>
+      <h2>Treven + Angular</h2>
+      <p>Treven Web App uses microfrontend services integrating both Reactjs and Angular.</p>
     </div>
     <div class="divider" role="separator" aria-label="Divider"></div>
     <div class="right-side">
       <div class="pill-group">
         @for (item of [
-          { title: 'Explore the Docs', link: 'https://angular.dev' },
+          { title: 'Angular Docs', link: 'https://angular.dev' },
           { title: 'Learn with Tutorials', link: 'https://angular.dev/tutorials' },
-          { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' },
-          { title: 'Angular Language Service', link: 'https://angular.dev/tools/language-service' },
-          { title: 'Angular DevTools', link: 'https://angular.dev/tools/devtools' },
+          { title: 'CLI Docs', link: 'https://angular.dev/tools/cli' }
         ]; track item.title) {
           <a
             class="pill"
@@ -261,14 +286,14 @@
       </div>
       <div class="social-links">
         <a
-          href="https://github.com/angular/angular"
+          href="https://github.com/Treven37/TrevenW"
           aria-label="Github"
           target="_blank"
           rel="noopener"
         >
           <svg
-            width="25"
-            height="24"
+            width="73"
+            height="73"
             viewBox="0 0 25 24"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
@@ -280,7 +305,7 @@
           </svg>
         </a>
         <a
-          href="https://twitter.com/angular"
+          href=""
           aria-label="Twitter"
           target="_blank"
           rel="noopener"
@@ -299,7 +324,7 @@
           </svg>
         </a>
         <a
-          href="https://www.youtube.com/channel/UCbn1OgGei-DV7aSRo_HaAiw"
+          href=""
           aria-label="Youtube"
           target="_blank"
           rel="noopener"
@@ -319,7 +344,10 @@
             />
           </svg>
         </a>
+        
       </div>
+      <br/><br/>
+      <a href="http://localhost:3200/home"><button>Continue</button></a>
     </div>
   </div>
 </main>

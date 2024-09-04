@@ -21,13 +21,15 @@ const Welcomescreen = () => {
 			<Space Flex='7%' />
 			<NormalText style='text2' text='Social meets Strategy' size='30px'/>
 			<Space Flex='55%' />
-			<LinkButton path='/login' onClick={null} style='button1' text='Log in' />
-			<LinkButton path='/signup' onClick={null} style='button2' text='Sign up' />
+			<LinkButton path='/login' onClick={null} style='button2' text='Log in' />
+			<LinkButton path='/signup' onClick={null} style='button1' text='Register' />
+			
+			
 			<Space Flex='2%' />
 			<AnchorText style='text1' text='Stay Anonymous' />
 			<img src={WelcomeChess} className='welcomeimg1' />
 			<img src={FingerPrint} className='welcomeimg2' />
-			<p className='welcomeimg3'> One Tap Login </p>
+			<p className='welcomeimg3'> </p>
 		</div>
 		</>
 	)

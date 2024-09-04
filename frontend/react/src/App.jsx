@@ -46,7 +46,7 @@ function App() {
 				setInterval(()=>{
 					time++;
 					localStorage.setItem('time', time);
-					if (time != 0) {
+					if (time >= 11) {
 						localStorage.setItem('flash', 'true');
 						setIsFlashing(false);
 						localStorage.setItem('time', 0);
@@ -77,7 +77,7 @@ function App() {
 			return (
 				<Router>
       				<Routes>
-      				  <Route path="*" element={<><LinkButton path='/' text='Log out' style="button1o"/></>} />
+      				  <Route path="*" element={<><div class="loader"></div></>} />
         				<Route path="/" element={<><Welcomescreen/></>} />
         				<Route path="/login" element={<><Loginscreen/></>} />
         				<Route path="/signup" element={<><Signupscreen/></>} />

@@ -13,7 +13,7 @@ app.use(session({
 }));
 
 app.use(cors({
-	origin: 'http://localhost:5173'
+	origin: 'http://localhost:3200'
 }));
 
 app.use(express.json()); // For JSON data
@@ -36,13 +36,13 @@ mongoose.connect(mongoDBUri, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
-.then(() => console.log('Connected to MongoDB'))
+.then(() => {})
 .catch(err => console.error('Failed to connect to MongoDB', err));
 
 const db = mongoose.connection;
-db.on('connected', () => console.log('Mongoose connected'));
+db.on('connected', () => {});
 db.on('error', err => console.error('Mongoose connection error:', err));
-db.on('disconnected', () => { console.log('Mongoose disconnected'); });
+db.on('disconnected', () => {});
 
 app.listen(PORT, () => {
 	console.log(`App listening at port ${PORT}`)
