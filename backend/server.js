@@ -22,7 +22,8 @@ app.use(express.urlencoded({ extended: true })); // For URL-encoded data
 // ... other routes
 
 
-app.use('/api', require('./routes/auth'))
+app.use('/api', require('./routes/auth'));
+app.use('/api/user', require('./routes/user'));
 
 app.get('/', (req, res) => {
 	res.json();
@@ -45,7 +46,7 @@ db.on('error', err => console.error('Mongoose connection error:', err));
 db.on('disconnected', () => {});
 
 app.listen(PORT, () => {
-	console.log(`App listening at port ${PORT}`)
+	console.log(`Server listening at port ${PORT}`)
 });
 
 process.on('SIGINT', () => {

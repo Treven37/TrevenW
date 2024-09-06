@@ -47,7 +47,7 @@ const login = async (req, res) => {
 				return res.status(200).json({});	
 			}
 			//creates jwt
-			const token2 = jwt.sign({userId: name2Exist._id}, process.env.SECRETKEY, {expiresIn: '1h'});
+			const token2 = jwt.sign({userId: name2Exist.user}, process.env.SECRETKEY, {expiresIn: '1h'});
 			//sucess login
 			name2Exist.isLogin = true;
 			res.status(200).json({'a': true, 'token': token2});
@@ -58,7 +58,7 @@ const login = async (req, res) => {
 			}
 			
 			//creates jwt
-			const token2 = jwt.sign({userId: user2Exist._id}, process.env.SECRETKEY, {expiresIn: '1h'});
+			const token2 = jwt.sign({userId: user2Exist.user}, process.env.SECRETKEY, {expiresIn: '1h'});
 			//sucess login
 			user2Exist.isLogin = true;
 			res.status(200).json({'a': true, 'token': token2});
@@ -97,9 +97,9 @@ const verify = async (req, res) => {
 	const newUser = new User({name, user, pass, profilepic});
 	await newUser.save();
 	//create jwttoken
-	const token = jwt.sign({userId: newUser._id}, process.env.SECRETKEY, {expiresIn: '1h'});
+	const token = jwt.sign({userId: newUser.user}, process.env.SECRETKEY, {expiresIn: '1h'});
 	//sucess verified
-	res.status(200).json({'a': true, 'token': token, 'name': name, 'user': user, 'profilepic': profilepic});
+	res.status(200).json({'a': true, 'token': token});
 	}
 }
 

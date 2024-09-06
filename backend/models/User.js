@@ -27,21 +27,22 @@ const userSchema = new mongoose.Schema({
 	},
 	bio: {
 		type: String,
+		default: ' '
 	},
 	excellence: {
-		type: Number
+		type: Number,
+		default: 0
 	},
 	followers: {
-		type: Number
+		type: Number,
+		default: 0
 	},
 	elo: {
-		type: Number
+		type: Number,
+		default: 300
 	},
 	gender: {
 		type: Number
-	},
-	isLogin: {
-		
 	}
 });
 

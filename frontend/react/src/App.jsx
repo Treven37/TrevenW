@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react'
+import axios from 'axios'
 import reactLogo from './assets/react.svg'
 import trevenLogo from './assets/treven.svg'
 
@@ -34,7 +35,7 @@ function App() {
 	}
 	const { theme, toggleTheme } = useContext(ThemeContext);
 	const [isFlashing, setIsFlashing] = useState(localStorage.getItem('flash') == 'true');
-	const [isLoggedin, setIsLoggedin] = useState(localStorage.getItem('finalToken') !== null);
+	const [isLoggedin, setIsLoggedin] = useState(localStorage.getItem('token') !== null);
 	
 	var time = localStorage.getItem('time');
 	
@@ -54,7 +55,24 @@ function App() {
 					}
 				}, 1000);
 			}, 2637);
-		
+			if (isLoggedin) {
+				const token = localStorage.getItem('token');
+				for(let i=0; i < localStorage.length; i++) {
+					if (localStorage.key(i) != 'token') localStorage.removeItem(localStorage.key(i));
+				}
+    			const headers = { Authorization: `${token}`};
+				axios.post('http://localhost:8000/api/user/getPrivateData', null, {headers:headers})
+      			.then((response) => {
+      			  
+      			  localStorage.setItem('user', response.data.user);
+					localStorage.setItem('followers', response.data.followers);
+					localStorage.setItem('elo', response.data.elo);
+					localStorage.setItem('bio', response.data.bio);
+ 		     	})
+      			.catch((error) => {
+        			console.error(error);
+   		   	});
+			}
 	}, []);
 	
 	if (isFlashing) {
@@ -68,7 +86,7 @@ function App() {
       				<Routes>
         				<Route path="/home" element={<><Home/> <LinkButton path='/' text='Log out' style="button1o"/></>} />
         				<Route path="*" element={<><LinkButton path='/' text='Log out' style="button1o"/></>} />
-        				<Route path="/user" element={<><User/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
+        				<Route path="/user" element={<><User/></>} />
         				<Route path="/game" element={<><Game/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
       				</Routes>
     			</Router>

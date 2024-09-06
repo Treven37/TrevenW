@@ -10,7 +10,7 @@ const LinkButton = ({path, onClick, style, text}) => {
     setIsClicked(true);
     setTimeout(()=>{
       if (path == '/') {
-      	localStorage.removeItem('finalToken');
+      	localStorage.removeItem('token');
       	nav(path);
       	window.location.reload();
       } else {

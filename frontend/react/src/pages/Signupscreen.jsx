@@ -32,7 +32,6 @@ const Signupscreen = () => {
     	axios.post('http://localhost:8000/api/signup', JSON.parse(jsonData))
       	.then((response) => {
         	if (response.data.a) {
-        		localStorage.setItem('token', response.data.token);
         		localStorage.setItem('auth', formData.name);
         		localStorage.setItem('user', formData.user);
         		localStorage.setItem('pass', formData.pass);

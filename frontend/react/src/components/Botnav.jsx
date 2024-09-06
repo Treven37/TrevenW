@@ -3,6 +3,7 @@ import { useState } from 'react'
 //hooks
 import {Link} from 'react-router-dom'
 //assets
+import Defaultpf from '../assets/4.svg'
 import homeNav from '../assets/home.svg'
 import gameNav from '../assets/game.svg'
 import userNav from '../assets/user.svg'
@@ -12,7 +13,6 @@ import userNav from '../assets/user.svg'
 import '../styles/styleglobal.scss'
 
 const Botnav = ({Nav}) => {
-	alert(localStorage.getItem('profilepic'));
 	return (
 	<>
 	<div style={{width: '100%', height: '7%', position: 'fixed', bottom: 0, background: 'red', opacity: '0', flexFlow: 'row', zIndex: 2}}>
@@ -27,7 +27,7 @@ const Botnav = ({Nav}) => {
 		</Link>
 	</div>
 	<div style={{width: '100%', position: 'fixed', bottom: 0}}>
-		<img src={localStorage.getItem('profilepic')} id='botimg' style={{height: '28px', width: '28px', borderRadius: '50%', border: '1px solid rgb(138, 43, 226)', bottom: '1%', left: '7%', position: 'fixed', background: 'white'}}/>
+		<img src={localStorage.getItem('profilepic') ? localStorage.getItem('profilepic') : Defaultpf} id='botimg' style={{height: '28px', width: '28px', borderRadius: '50%', border: '1px solid rgb(138, 43, 226)', bottom: '1%', left: '7%', position: 'fixed', background: 'white'}}/>
 		<img style={{width: '100%'}} src={Nav == 0 ? homeNav : (Nav == 1 ? gameNav : userNav)} />
 	</div>
 	</>

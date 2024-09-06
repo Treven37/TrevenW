@@ -36,7 +36,7 @@ const Verification = () => {
 		})
       	.then((response) => {
         	if(response.data.a) {
-        		localStorage.setItem('finalToken', response.data.token);
+        		localStorage.setItem('token', response.data.token);
         		localStorage.setItem('name', response.data.name);
         		localStorage.setItem('user', response.data.user);
         		localStorage.setItem('profilepic', response.data.profilepic);

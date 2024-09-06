@@ -32,7 +32,7 @@ const Loginscreen = () => {
     	axios.post('http://localhost:8000/api/login', JSON.parse(jsonData))
       	.then((response) => {
 			if (response.data.a) {
-				localStorage.setItem('finalToken', response.data.token);
+				localStorage.setItem('token', response.data.token);
 				navigate('/home');
 				//window.location.reload();
 				window.location.href = 'http://localhost:4200';
