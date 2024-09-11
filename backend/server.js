@@ -24,6 +24,7 @@ app.use(express.urlencoded({ extended: true })); // For URL-encoded data
 
 app.use('/api', require('./routes/auth'));
 app.use('/api/user', require('./routes/user'));
+app.use('/ai', require('./routes/ai'));
 
 app.get('/', (req, res) => {
 	res.json();

@@ -175,10 +175,43 @@ BotNav {
 	display: none;
 }
 
+
+.userbotnavClick {
+	color: white;
+	text-decoration: underline;
+	font-size: 15px ;
+	background: var(--accent-color);
+}
+.userbotnav {
+	background: var(--neutral-color);
+	color: var(--accent-color);
+	text-decoration: none;
+	font-size: 13px ;
+}
+
+
 .borderBase {
 	border: 1px solid var(--base-dominant-color);
 }
 .borderAccent {
 	border: 1px solid var(--accent-color);
+}
+.bgBase {
+	background: var(--base-dominant-color);
+}
+.bgNeutral {
+	background: var(--neutral-color);
+}
+.bgAccent {
+	background: var(--accent-color);
+}
+.textBase {
+	color: var(--base-dominant-color);
+}
+.textNeutral {
+	color: var(--neutral-color);
+}
+.textAccent {
+	color: var(--accent-color);
 }
 

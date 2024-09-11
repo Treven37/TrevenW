@@ -12,8 +12,8 @@ const Game = () => {
 	return (
 	<>
 	<div className='main'>
-		
-			Hi
+		<Space Flex='30' />
+		<p>Will replace React into Angular. Still learning Angular.</p>
 		
 		<Botnav Nav={1}/>
 	</div>

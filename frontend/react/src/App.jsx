@@ -13,6 +13,8 @@ import Forgot from './pages/Forgot.jsx'
 import Verification from './pages/Verification.jsx'
 import Home from './pages/Home.jsx'
 import User from './pages/User.jsx'
+import Chat from './pages/Chat.jsx'
+import Rank from './pages/Rank.jsx'
 import Game from './pages/Game.jsx'
 import { ThemeContext } from './utils/theme';
 
@@ -63,7 +65,6 @@ function App() {
     			const headers = { Authorization: `${token}`};
 				axios.post('http://localhost:8000/api/user/getPrivateData', null, {headers:headers})
       			.then((response) => {
-      			  
       			  localStorage.setItem('user', response.data.user);
 					localStorage.setItem('followers', response.data.followers);
 					localStorage.setItem('elo', response.data.elo);
@@ -84,10 +85,12 @@ function App() {
 			return (
 				<Router>
       				<Routes>
-        				<Route path="/home" element={<><Home/> <LinkButton path='/' text='Log out' style="button1o"/></>} />
+        				<Route path="/home" element={<><Home/></>} />
         				<Route path="*" element={<><LinkButton path='/' text='Log out' style="button1o"/></>} />
         				<Route path="/user" element={<><User/></>} />
-        				<Route path="/game" element={<><Game/><NormalButton onClick={toggleTheme} style="button1o" text="Switch Mode"/></>} />
+        				<Route path="/chat" element={<><Chat/></>} />
+        				<Route path="/rank" element={<><Rank/></>} />
+        				<Route path="/game" element={<><Game/></>} />
       				</Routes>
     			</Router>
 			)

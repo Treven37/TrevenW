@@ -12,7 +12,7 @@ const FlashScreen = () => {
   	<div className='main'>
   	  <Space Flex='40%' />
 		<img className="logo" src={trevenLogo} alt="treven's logo"/>
-		<Space Flex='21%' />
+		<Space Flex='30%' />
 		<NormalText style="text3" text="Treven"/>
 		<NormalText style="text1" text="from Project 37"/>
 	  </div>  

@@ -2,10 +2,11 @@ import axios from 'axios'
 //hooks
 
 //assets
-import Defaultpf from '../assets/4.svg'
+import Defaultpf from '../assets/mori.png'
 import BG from '../assets/userbg.jpeg'
 //components
 import Botnav from '../components/Botnav'
+import Userbotnav from '../components/Userbotnav'
 import NormalText from '../components/Text/NormalText'
 import Space from '../components/Space'
 //styles
@@ -30,6 +31,7 @@ const User = () => {
 			<NormalText style='text1' text={`${localStorage.getItem('elo')} ELO`} size='21px'/>
 			
 		</div>
+		<Userbotnav/>
 		<NormalText style='text2' text={`${localStorage.getItem('bio')}`} size='15px'/>
 		<Botnav Nav={2}/>
 	</div>

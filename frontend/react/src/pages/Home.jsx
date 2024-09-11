@@ -13,7 +13,7 @@ const Home = () => {
 	<>
 	<div className='main'>
 		<Space Flex='30' />
-		<p>Testing </p>
+		<p>AI generated content (algorithm) still underdevelopment. Still learning AI, ML, and Python.</p>
 		
 		<Botnav Nav={0}/>
 	</div>

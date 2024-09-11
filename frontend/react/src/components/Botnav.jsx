@@ -3,7 +3,7 @@ import { useState } from 'react'
 //hooks
 import {Link} from 'react-router-dom'
 //assets
-import Defaultpf from '../assets/4.svg'
+import Defaultpf from '../assets/mori.png'
 import homeNav from '../assets/home.svg'
 import gameNav from '../assets/game.svg'
 import userNav from '../assets/user.svg'
