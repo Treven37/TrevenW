@@ -14,6 +14,7 @@ import Verification from './pages/Verification.jsx'
 import Home from './pages/Home.jsx'
 import User from './pages/User.jsx'
 import Chat from './pages/Chat.jsx'
+import OtherChat from './pages/OtherChat.jsx'
 import Rank from './pages/Rank.jsx'
 import Game from './pages/Game.jsx'
 import { ThemeContext } from './utils/theme';
@@ -49,7 +50,7 @@ function App() {
 				setInterval(()=>{
 					time++;
 					localStorage.setItem('time', time);
-					if (time >= 11) {
+					if (time >= 37) {
 						localStorage.setItem('flash', 'true');
 						setIsFlashing(false);
 						localStorage.setItem('time', 0);
@@ -65,6 +66,7 @@ function App() {
     			const headers = { Authorization: `${token}`};
 				axios.post('http://localhost:8000/api/user/getPrivateData', null, {headers:headers})
       			.then((response) => {
+      			  if(response.data.a == 0) {localStorage.removeItem('token'); window.loction.reload();}
       			  localStorage.setItem('user', response.data.user);
 					localStorage.setItem('followers', response.data.followers);
 					localStorage.setItem('elo', response.data.elo);
@@ -91,6 +93,7 @@ function App() {
         				<Route path="/chat" element={<><Chat/></>} />
         				<Route path="/rank" element={<><Rank/></>} />
         				<Route path="/game" element={<><Game/></>} />
+       				 <Route path="/mess" element={<><OtherChat/></>} />
       				</Routes>
     			</Router>
 			)

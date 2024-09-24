@@ -8,13 +8,19 @@ require('dotenv').config();
 const getPublicData = async (req, res) => {
 	const user = req.body.data;
 	const userData = await User.findOne({user});
+	userData.pass = null;
 	res.status(201).json({'a': 'Hi'});
 }
 
 const getPrivateData = async (req, res) => {
-	const user = req.userId;
-	const userData = await User.findOne({user});
-	res.status(201).json(userData);
+	if (req.userId) {
+		const user = req.userId;
+		const userData = await User.findOne({user});
+		userData.pass = null;
+		res.status(201).json(userData);
+	} else {
+		res.status(201).json({'a': 0});
+	}
 }
 
 const updateData = async (req, res) => {

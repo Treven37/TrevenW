@@ -1,17 +1,20 @@
 import axios from 'axios'
 import React, {useState} from 'react'
+import {Link} from 'react-router-dom'
 //hooks
 
 //assets
 import Defaultpf from '../assets/4.svg'
-import Mori from '../assets/mori.png'
+import Mori from '../assets/sample1.png'
 import My from '../assets/bot.png'
 import BG from '../assets/userbg.jpeg'
+
 //components
 import Botnav from '../components/Botnav'
 import Userbotnav from '../components/Userbotnav'
 import NormalText from '../components/Text/NormalText'
 import Space from '../components/Space'
+
 //styles
 import '../styles/styleglobal.scss'
 
@@ -21,22 +24,50 @@ const User = () => {
 	const HandleMsg = (event) => {
     	event.preventDefault();
     	document.getElementById('loader').style.display = 'block';
-    	const data = JSON.stringify(msg);
+    	var data = JSON.stringify(msg);
     	document.getElementById('content').innerHTML = '';
-    	for(let i=0; i<1; i++) {
+    	function gemini() {
 		axios.post('http://localhost:8000/ai/a', JSON.parse(data))
       			.then((response) => {
-      			  let msg = response.data.msg +'<br/><br/><br/>';
-      			  msg = msg.split(' ');
+      			  let msgs = response.data.msg +'<br/><br/><br/>';
+                    //setMsg({...msg, mesg: response.data.msg});
+      			  msgs = msgs.split(' ');
+      			  let i=0;
+      			  setInterval(()=>{
+      				if(msgs.length == i){
+					  	document.getElementById('loader').style.display = 'none';
+					  	i=7373;
+						  //groq();
+					  }else if (msgs.length != i && i < 7373){
+					  	document.getElementById('content').innerHTML +=
+      			    	msgs[i]+' ';
+      					i++;
+      					
+					  } 
+					}, 37)
+      			  
+ 		     	})
+      			.catch((error) => {
+        			console.error(error);
+   		   	});
+   		
+   	};
+   	function groq() {
+   	axios.post('http://localhost:8000/ai/b', JSON.parse(data))
+      			.then((response) => {
+      			  let msgs = '<h3>AI2</h3>'+response.data.msg +'<br/><br/><br/>';
+                    //setMsg({...msg, mesg: response.data.msg});
+      			  msgs = msgs.split(' ');
       			  let i=0;
       			  
       			  setInterval(()=>{
-      				if(msg.length == i){
+      				if(msgs.length == i){
 					  	document.getElementById('loader').style.display = 'none';
 					  	i=7373;
-					  }else if (msg.length != i && i < 7373){
+						  gemini();
+					  }else if (msgs.length != i && i < 7373){
 					  	document.getElementById('content').innerHTML +=
-      			    	msg[i]+' ';
+      			    	msgs[i]+' ';
       					i++;
 					  } 
 					}, 37)
@@ -45,9 +76,12 @@ const User = () => {
       			.catch((error) => {
         			console.error(error);
    		   	});
-   	}
-   	
+   		data = JSON.stringify(msg);
+       };
+       groq();
+       
    	setMsg({...msg, mesg: ''});
+   
 	};
 	return (
 	<>
@@ -68,7 +102,9 @@ const User = () => {
 			<div id='loader' style={{display: 'none', marginBottom: '262px'}} class="loader"></div>
 		</div>
 		<div style={{position: 'fixed', right: '7px', bottom: '84px'}}>
-		<svg width="44px" height="37px" viewBox="-1.92 -1.92 27.84 27.84" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)" stroke="#4169E1"><g id="SVGRepo_bgCarrier" stroke-width="0"><rect x="-1.92" y="-1.92" width="27.84" height="27.84" rx="13.92" fill="#fbfbfb" strokewidth="0"></rect></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M12 3C4.5885 3 3 4.5885 3 12C3 19.4115 4.5885 21 12 21C19.4115 21 21 19.4115 21 12C21 4.5885 19.4115 3 12 3ZM11.5 7.75C9.42893 7.75 7.75 9.42893 7.75 11.5C7.75 13.5711 9.42893 15.25 11.5 15.25C13.5711 15.25 15.25 13.5711 15.25 11.5C15.25 9.42893 13.5711 7.75 11.5 7.75Z" fill="#4169E1"></path> <path d="M3 12C3 4.5885 4.5885 3 12 3C19.4115 3 21 4.5885 21 12C21 19.4115 19.4115 21 12 21C4.5885 21 3 19.4115 3 12Z" stroke="#4169E1" stroke-width="2.4"></path> <path d="M14 14L16 16" stroke="#4169E1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M15 11.5C15 13.433 13.433 15 11.5 15C9.567 15 8 13.433 8 11.5C8 9.567 9.567 8 11.5 8C13.433 8 15 9.567 15 11.5Z" stroke="#4169E1" stroke-width="2.4"></path> </g></svg>
+		<Link to="/mess">
+			<svg width="44px" height="37px" viewBox="-1.92 -1.92 27.84 27.84" fill="none" xmlns="http://www.w3.org/2000/svg" transform="rotate(0)" stroke="#4169E1"><g id="SVGRepo_bgCarrier" stroke-width="0"><rect x="-1.92" y="-1.92" width="27.84" height="27.84" rx="13.92" fill="#fbfbfb" strokewidth="0"></rect></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path opacity="0.1" fill-rule="evenodd" clip-rule="evenodd" d="M12 3C4.5885 3 3 4.5885 3 12C3 19.4115 4.5885 21 12 21C19.4115 21 21 19.4115 21 12C21 4.5885 19.4115 3 12 3ZM11.5 7.75C9.42893 7.75 7.75 9.42893 7.75 11.5C7.75 13.5711 9.42893 15.25 11.5 15.25C13.5711 15.25 15.25 13.5711 15.25 11.5C15.25 9.42893 13.5711 7.75 11.5 7.75Z" fill="#4169E1"></path> <path d="M3 12C3 4.5885 4.5885 3 12 3C19.4115 3 21 4.5885 21 12C21 19.4115 19.4115 21 12 21C4.5885 21 3 19.4115 3 12Z" stroke="#4169E1" stroke-width="2.4"></path> <path d="M14 14L16 16" stroke="#4169E1" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M15 11.5C15 13.433 13.433 15 11.5 15C9.567 15 8 13.433 8 11.5C8 9.567 9.567 8 11.5 8C13.433 8 15 9.567 15 11.5Z" stroke="#4169E1" stroke-width="2.4"></path> </g></svg>
+		</Link>
 		<NormalText style='text1' size='11px' text='Other User' />
 		</div>
 		<div className='row bgBase borderAccent' style={{position: 'fixed', borderRadius: '11px', bottom:0, left: 0, height: '77px', width: '100%'}}>

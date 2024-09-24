@@ -28,7 +28,7 @@ const Botnav = ({Nav}) => {
 	</div>
 	<div style={{width: '100%', position: 'fixed', bottom: 0}}>
 		<img src={localStorage.getItem('profilepic') ? localStorage.getItem('profilepic') : Defaultpf} id='botimg' style={{height: '28px', width: '28px', borderRadius: '50%', border: '1px solid rgb(138, 43, 226)', bottom: '1%', left: '7%', position: 'fixed', background: 'white'}}/>
-		<img style={{width: '100%'}} src={Nav == 0 ? homeNav : (Nav == 1 ? gameNav : userNav)} />
+		<img src={Nav == 0 ? homeNav : (Nav == 1 ? gameNav : userNav)} style={{width: '100%'}}/>
 	</div>
 	</>
 	)
